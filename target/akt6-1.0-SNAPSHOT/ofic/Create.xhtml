@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateOficTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateOficLabel_idofic}" for="idofic" />
+                    <h:inputText id="idofic" value="#{oficController.selected.idofic}" title="#{bundle.CreateOficTitle_idofic}" required="true" requiredMessage="#{bundle.CreateOficRequiredMessage_idofic}"/>
+                    <h:outputLabel value="#{bundle.CreateOficLabel_ofic}" for="ofic" />
+                    <h:inputText id="ofic" value="#{oficController.selected.ofic}" title="#{bundle.CreateOficTitle_ofic}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{oficController.create}" value="#{bundle.CreateOficSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{oficController.prepareList}" value="#{bundle.CreateOficShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateOficIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

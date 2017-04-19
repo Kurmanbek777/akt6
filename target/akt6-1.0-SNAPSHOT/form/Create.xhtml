@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFormTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFormLabel_idform}" for="idform" />
+                    <h:inputText id="idform" value="#{formController.selected.idform}" title="#{bundle.CreateFormTitle_idform}" required="true" requiredMessage="#{bundle.CreateFormRequiredMessage_idform}"/>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_date}" for="date" />
+                    <h:inputText id="date" value="#{formController.selected.date}" title="#{bundle.CreateFormTitle_date}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_idtovar}" for="idtovar" />
+                    <h:selectOneMenu id="idtovar" value="#{formController.selected.idtovar}" title="#{bundle.CreateFormTitle_idtovar}" >
+                        <f:selectItems value="#{tovarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_otdelID}" for="otdelID" />
+                    <h:selectOneMenu id="otdelID" value="#{formController.selected.otdelID}" title="#{bundle.CreateFormTitle_otdelID}" >
+                        <f:selectItems value="#{otdelController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_userID}" for="userID" />
+                    <h:selectOneMenu id="userID" value="#{formController.selected.userID}" title="#{bundle.CreateFormTitle_userID}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_oficID}" for="oficID" />
+                    <h:selectOneMenu id="oficID" value="#{formController.selected.oficID}" title="#{bundle.CreateFormTitle_oficID}" >
+                        <f:selectItems value="#{oficController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_otdel2ID}" for="otdel2ID" />
+                    <h:selectOneMenu id="otdel2ID" value="#{formController.selected.otdel2ID}" title="#{bundle.CreateFormTitle_otdel2ID}" >
+                        <f:selectItems value="#{otdelController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_user2ID}" for="user2ID" />
+                    <h:selectOneMenu id="user2ID" value="#{formController.selected.user2ID}" title="#{bundle.CreateFormTitle_user2ID}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateFormLabel_ofic2ID}" for="ofic2ID" />
+                    <h:selectOneMenu id="ofic2ID" value="#{formController.selected.ofic2ID}" title="#{bundle.CreateFormTitle_ofic2ID}" >
+                        <f:selectItems value="#{oficController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{formController.create}" value="#{bundle.CreateFormSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{formController.prepareList}" value="#{bundle.CreateFormShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFormIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
